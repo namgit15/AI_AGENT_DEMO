@@ -1,9 +1,12 @@
+from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_google_genai import ChatGoogleGenerativeAI
 from .tools import calculator, get_current_date
-import os
 
-llm = ChatGoogleGenerativeAI(model="gemini-3-flash-preview", temperature=0)
+load_dotenv()
+MODEL = "gemini-3-flash-preview"
+
+llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0)
 
 tools = [calculator, get_current_date]
 
@@ -11,5 +14,5 @@ tools = [calculator, get_current_date]
 agent_graph = create_agent(
     llm,
     tools,
-    state_modifier="You are a helpful AI agent. Use tools when needed. Be concise."
+    system_prompt="You are a helpful AI agent. Use tools when needed. Be concise."
 )
