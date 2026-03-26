@@ -6,3 +6,4 @@ langchain-core==1.2.22
 pydantic==2.10.3
 python-dotenv==1.2.2
 langchain-google-genai==4.2.1
+langchain-groq==1.1.2

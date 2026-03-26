@@ -1,12 +1,15 @@
 from dotenv import load_dotenv
 from langchain.agents import create_agent
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_groq import ChatGroq
+import os
 from .tools import calculator, get_current_date
 
 load_dotenv()
-MODEL = "gemini-3-flash-preview"
+MODEL = os.getenv("GROQ_MODEL")
 
-llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0)
+# from langchain_google_genai import ChatGoogleGenerativeAI
+# llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0)
+llm = ChatGroq(model=MODEL, temperature=0)
 
 tools = [calculator, get_current_date]
 

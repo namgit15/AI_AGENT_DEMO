@@ -23,4 +23,4 @@ async def invoke_agent(request: Query):
     # Get the final answer
     final_message = result["messages"][-1].content
     print(f'final-mssg: {final_message}')
-    return {"response": final_message[0]['text']}
+    return {"response": final_message}
