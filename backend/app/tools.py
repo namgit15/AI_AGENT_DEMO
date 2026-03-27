@@ -1,3 +1,5 @@
+from decimal import Decimal
+
 from langchain_core.tools import tool
 import datetime
 
@@ -14,3 +16,13 @@ def calculator(expression: str) -> str:
 def get_current_date() -> str:
     """Returns today's date in YYYY-MM-DD format."""
     return datetime.date.today().isoformat()
+
+@tool
+def get_fx_rate(currency: str) -> Decimal:
+    """Return fx rate for given currency"""
+    if currency.upper() == 'INR':
+        return Decimal('126.10')
+    elif currency.upper() == 'EUR':
+        return Decimal('1.15')
+    else:
+        return f"Unknown {currency}"

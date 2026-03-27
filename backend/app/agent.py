@@ -2,7 +2,7 @@ from dotenv import load_dotenv
 from langchain.agents import create_agent
 from langchain_groq import ChatGroq
 import os
-from .tools import calculator, get_current_date
+from .tools import calculator, get_current_date, get_fx_rate
 
 load_dotenv()
 MODEL = os.getenv("GROQ_MODEL")
@@ -11,7 +11,7 @@ MODEL = os.getenv("GROQ_MODEL")
 # llm = ChatGoogleGenerativeAI(model=MODEL, temperature=0)
 llm = ChatGroq(model=MODEL, temperature=0)
 
-tools = [calculator, get_current_date]
+tools = [calculator, get_current_date, get_fx_rate]
 
 # This is the full AI Agent (ReAct style)
 agent_graph = create_agent(
